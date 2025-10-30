@@ -1,58 +1,51 @@
-// Configuração do Supabase
-const SUPABASE_URL = 'https://rukvaidffgqqoxplqiyx.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ1a3ZhaWRmZmdxcW94cGxxaXl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE4MzM3MTYsImV4cCI6MjA3NzQwOTcxNn0.JCpTcUw6n_POIowuS_kvIjz-VHeo7wnsrzcBaoRlpvI';
+# FrioControl - Sistema de Gestão
 
-// Inicializar o cliente Supabase
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+Sistema completo de gestão para empresas de manutenção de ar-condicionado.
 
-// Estado da aplicação
-let currentUser = null;
-let currentCompany = null;
-let userProfile = null;
-let editingCompanyId = null;
-let editingUserId = null;
+## 🚀 Funcionalidades
 
-// Elementos da DOM
-const loginScreen = document.getElementById('loginScreen');
-const appScreen = document.getElementById('appScreen');
-const loginBtn = document.getElementById('loginBtn');
-const logoutBtn = document.getElementById('logoutBtn');
-const currentCompanyElement = document.getElementById('currentCompany');
-const userNameElement = document.getElementById('userName');
-const userRoleElement = document.getElementById('userRole');
-const loginAlert = document.getElementById('loginAlert');
-const loginText = document.getElementById('loginText');
-const loginSpinner = document.getElementById('loginSpinner');
+- ✅ **Gestão de Empresas** - Cadastro completo de empresas
+- ✅ **Gestão de Usuários** - Cadastro com vínculo a empresas
+- ✅ **Controle de Chamados** - Abertura e acompanhamento
+- ✅ **Orçamentos** - Criação e gestão de orçamentos
+- ✅ **Financeiro** - Controle de receitas e despesas
+- ✅ **Relatórios** - Relatórios gerenciais
+- ✅ **Multi-perfil** - Admin, Técnico, Atendente
 
-// Função para configurar navegação por hash
-function setupHashNavigation() {
-    // Verificar hash atual na URL
-    const currentHash = window.location.hash.replace('#', '');
-    if (currentHash) {
-        const tabElement = document.querySelector(`[data-tab="${currentHash}"]`);
-        if (tabElement) {
-            tabElement.click();
-        }
-    }
+## 🛠️ Tecnologias
 
-    // Configurar evento para mudanças no hash
-    window.addEventListener('hashchange', function() {
-        const hash = window.location.hash.replace('#', '');
-        const tabElement = document.querySelector(`[data-tab="${hash}"]`);
-        if (tabElement) {
-            tabElement.click();
-        }
-    });
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Backend**: Supabase (PostgreSQL + Auth)
+- **Deploy**: Netlify
 
-    // Configurar clicks nos links para atualizar o hash
-    document.querySelectorAll('.sidebar-menu a[href^="#"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#') {
-                window.location.hash = href;
-            }
-        });
-    });
-}
+## 📦 Deploy no Netlify
 
-// ... o restante do código permanece igual ...
+1. Faça push para o GitHub
+2. Acesse [Netlify](https://netlify.com)
+3. Conecte com GitHub e selecione o repositório
+4. Deploy automático!
+
+## 🔧 Configuração do Netlify
+
+- **Production branch**: `main`
+- **Build command**: (deixe vazio)
+- **Publish directory**: (deixe vazio ou `.`)
+
+## 📋 Estrutura do Banco
+
+### Tabelas Principais:
+- `companies` - Cadastro de empresas
+- `profiles` - Perfis de usuários
+- `tickets` - Chamados de serviço
+- `budgets` - Orçamentos
+- `financial_transactions` - Transações financeiras
+
+## 👥 Perfis de Usuário
+
+- **Administrador**: Acesso total ao sistema
+- **Técnico**: Apenas chamados e dashboard
+- **Atendente**: Clientes, financeiro e orçamentos
+
+## 📞 Suporte
+
+Desenvolvido por [DevSparkWeb](https://devsparkweb.netlify.app)
